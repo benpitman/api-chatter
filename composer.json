@@ -1,0 +1,31 @@
+{
+    "name": "benpitman/api-chatter",
+    "description": "A universal chat system",
+    "authors": [
+        {
+            "name": "Ben Pitman"
+        }
+    ],
+    "require": {
+        "pitmanware/kentron": "^2.0",
+        "pitmanware/kentron-slim": "^2.0",
+        "pitmanware/kentron-illuminate": "^2.0",
+        "pitmanware/kentron-phpmailer": "^2.0",
+        "spiral/roadrunner": "^1.9.2",
+        "symfony/console": "^5.0"
+    },
+    "require-dev": {
+        "spiral/dumper": "*",
+        "nyholm/psr7-server": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "source"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
