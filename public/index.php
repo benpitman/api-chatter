@@ -23,24 +23,22 @@ if (session_status() === PHP_SESSION_NONE) {
 // Require the autoloader
 require ROOT_DIR . '/vendor/autoload.php';
 
-// Boot the app
-$psr17Factory = new Nyholm\Psr7\Factory\Psr17Factory();
-$app = new App\Chatter($psr17Factory);
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Spiral\RoadRunner\Http\PSR7Worker;
+use Spiral\RoadRunner\Worker;
 
+$psr17Factory = new Psr17Factory();
+$app = new App\Chatter($psr17Factory);
 $app->boot();
 
-$relay = new Spiral\Goridge\StreamRelay(STDIN, STDOUT);
-$worker = new Spiral\RoadRunner\Worker($relay);
-$psr7 = new Spiral\RoadRunner\PSR7Client($worker, $psr17Factory, $psr17Factory, $psr17Factory);
+$worker = Worker::create();
+$psr7Worker = new PSR7Worker($worker, $psr17Factory, $psr17Factory, $psr17Factory);
 
-while ($request = $psr7->acceptRequest()) {
+while ($req = $psr7Worker->waitRequest()) {
     try {
-        $resp = $app->handle($request);
-
-        $psr7->respond($resp);
-    } catch (\Throwable $e) {
-        $psr7->getWorker()->error((string)$e);
+        $res = $app->handle($req);
+        $psr7Worker->respond($res);
+    } catch (Throwable $e) {
+        $psr7Worker->getWorker()->error((string)$e);
     }
-
-    $app->reset();
 }

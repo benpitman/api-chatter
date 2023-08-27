@@ -31,9 +31,8 @@ final class Chatter extends AApp
 
     public function boot (): void
     {
-        dd("hello");
-        // $this->reset();
-        // $this->bootRouter();
+        $this->reset();
+        $this->bootRouter();
         // $this->loadConfig();
         // $this->bootOrm();
         // $this->loadVariables();
@@ -56,7 +55,7 @@ final class Chatter extends AApp
 
     protected function bootRouter (): void
     {
-        // Router::loadAllRoutes($this);
+        Router::loadAllRoutes($this);
     }
 
     protected function bootOrm (): void
