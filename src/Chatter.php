@@ -12,6 +12,7 @@ use App\Core\Store\Variable\Variable;
 
 use App\Http\Router;
 use App\Module\Core\System\Variable\VariableSqlService;
+use Kentron\ASlimApp;
 use Symfony\Component\Console\Helper\Dumper;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 
@@ -20,7 +21,7 @@ use function rr\dd;
 /**
  * The inital application class, injected into the controllers
  */
-final class Chatter extends AApp
+final class Chatter extends ASlimApp
 {
     public function resetStores(): void
     {
@@ -56,6 +57,11 @@ final class Chatter extends AApp
     protected function bootRouter (): void
     {
         Router::loadAllRoutes($this);
+    }
+
+    protected function loadEnvironment(): void
+    {
+
     }
 
     protected function bootOrm (): void

@@ -7,12 +7,11 @@
         }
     ],
     "require": {
-        "pitmanware/kentron": "^2.0",
-        "pitmanware/kentron-slim": "^2.0",
-        "pitmanware/kentron-illuminate": "^2.0",
-        "pitmanware/kentron-phpmailer": "^2.0",
-        "spiral/roadrunner": "^2.0",
-        "symfony/console": "^5.0"
+        "pitmanware/kentron": "^4.0",
+        "pitmanware/kentron-slim": "^4.0",
+        "pitmanware/kentron-illuminate": "^4.0",
+        "pitmanware/kentron-phpmailer": "^4.0",
+        "symfony/console": "^6.0"
     },
     "require-dev": {
         "spiral/dumper": "*",

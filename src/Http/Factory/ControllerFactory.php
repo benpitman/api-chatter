@@ -1,15 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Factory;
 
-use Kentron\Factory\AControllerFactory;
+use Kentron\Template\Http\Factory\ASlimControllerFactory;
 
-use App\Http\Api\Controller\ApiController;
-
-final class ControllerFactory extends AControllerFactory
+class ControllerFactory extends ASlimControllerFactory
 {
-    public static function getApi(string $method): callable
-    {
-        return parent::getController(ApiController::class, $method);
-    }
+
 }
